@@ -78,6 +78,13 @@ public class AssetEncryption {
         }
     }
 
+    public static void writeIfEncrypted(byte[] src, File target) throws IOException {
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(target))) {
+            DataOutputStream dos = new DataOutputStream(bos);
+            dos.write(src);
+        }
+    }
+
     public static void encryptIfRaw(File target) throws IOException {
         byte[] src;
         try (FileInputStream fis = new FileInputStream(target)) {

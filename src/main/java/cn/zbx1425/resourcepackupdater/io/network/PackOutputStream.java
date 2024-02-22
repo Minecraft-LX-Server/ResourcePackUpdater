@@ -48,7 +48,7 @@ public class PackOutputStream extends OutputStream {
         if (closed) return;
         closed = true;
         if (encrypt) {
-            AssetEncryption.writeEncrypted(buffer.toByteArray(), target.toFile());
+            AssetEncryption.writeIfEncrypted(buffer.toByteArray(), target.toFile());
         } else {
             try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(target.toFile()))) {
                 bos.write(buffer.toByteArray());
