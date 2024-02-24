@@ -4,6 +4,7 @@ import com.google.gson.*;
 import net.fabricmc.loader.api.FabricLoader;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.lwjgl.system.CallbackI;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +23,7 @@ import java.util.function.Supplier;
 public class Config {
 
     public final ConfigItem<String> remoteConfigUrl = new ConfigItem<>(
-            "remoteConfigUrl", JsonElement::getAsString, JsonPrimitive::new, "http://lx.gteh.top/client_config.json");
+            "remoteConfigUrl", JsonElement::getAsString, JsonPrimitive::new, "https://lx.gteh.top/client_config.json");
 
     public final ConfigItem<List<SourceProperty>> sourceList = new ConfigItem<>(
         "sources",
@@ -81,8 +82,6 @@ public class Config {
             try {
                 HttpRequest httpRequest = HttpRequest.newBuilder(new URI(remoteConfigUrl.value))
                         .timeout(Duration.ofSeconds(10))
-                        .setHeader("User-Agent", "ResourcePackUpdater/" + ResourcePackUpdater.MOD_VERSION + " +https://www.zbx1425.cn")
-                        .setHeader("Accept-Encoding", "gzip")
                         .GET()
                         .build();
                 HttpResponse<String> httpResponse;
@@ -142,6 +141,18 @@ public class Config {
             "https://seu.complexstudio.net/jlp-srp", true, false, true
         ));
         */
+        /* sourceList.value.add(0, new SourceProperty(
+                "GitHub (by xingteh)",
+                "https://lx-rpu-gh.gteh.top", true, false ,true
+        ));
+        sourceList.value.add(1, new SourceProperty(
+                "GitLab (by xingteh)",
+                "https://lx-rpu-gl.gteh.top", true, false, true
+        ));
+        sourceList.value.add(2, new SourceProperty(
+                "Vercel (Hong Kong, China / Singapore)",
+                "https://lx-rpu-vc.gteh.top", true, false, true
+        )); */
     }
 
     public String getPackBaseDir() {

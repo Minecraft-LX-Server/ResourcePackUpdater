@@ -2,13 +2,14 @@
   "schemaVersion": 1,
   "id": "resourcepackupdater",
   "version": "${version}",
-  "name": "Resource Pack Updating Utility",
-  "description": "Updates a resource pack at game launch, or when requested.",
+  "name": "Resource Pack Updating Utility (LX)",
+  "description": "随时更新你的资源包。(LX 服务器专用)",
   "authors": [
-    "Zbx1425"
+    "Zbx1425",
+    "xingteh"
   ],
   "contact": {
-    "homepage": "https://www.zbx1425.cn"
+    "homepage": "https://lx.gteh.top"
   },
   "license": "MIT",
   "icon": "icon.png",
